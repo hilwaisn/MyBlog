@@ -8,4 +8,6 @@ public class AppDbContext:DbContext
 
     }
     public DbSet<Post> Posts { get; set; }
+    public DbSet<User> User { get; set; }
+    public DbSet<Registrasi> Registration {  get; set; }
 }

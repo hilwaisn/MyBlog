@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyBlog.Models;
 
 namespace MyBlog.Controllers
 {
+	[Authorize]
     public class PostController : Controller
     {
         private readonly AppDbContext _context;
@@ -11,6 +13,7 @@ namespace MyBlog.Controllers
 		{
 			_context=c;
 		}
+
 		/*private readonly List<Post> _listPosts;
 
 		public PostController() 
@@ -68,12 +71,44 @@ namespace MyBlog.Controllers
 		[HttpPost]
         public IActionResult Create([FromForm] Post data)
         {
-			data.Likes = 0;
 			data.CreatedDate = DateTime.Now;
 			_context.Posts.Add(data);
 			_context.SaveChanges();
             return RedirectToAction("Index");
         }
+		public IActionResult Edit(int id) {
+			var postData = _context.Posts.FirstOrDefault(x => x.Id == id);
+
+			return View(postData);
+		}
+
+		[HttpPost]
+		public IActionResult Edit([FromForm] Post data)
+		{
+			var dataFromDb = _context.Posts.FirstOrDefault(x => x.Id == data.Id);
+
+			if(dataFromDb != null)
+			{
+                dataFromDb.Title = data.Title;
+                dataFromDb.Content = data.Content;
+				dataFromDb.Likes = data.Likes;
+
+                _context.Posts.Update(dataFromDb);
+                _context.SaveChanges();
+            }
+			
+			return RedirectToAction("Index");
+		}
+		public IActionResult Delete(int id)
+		{
+			var dataFormDb = _context.Posts.FirstOrDefault(x => x.Id==id);
+			if(dataFormDb != null)
+			{
+				_context.Posts.Remove(dataFormDb);
+				_context.SaveChanges();
+			}
+			return RedirectToAction("Index");
+		}
         private List<Post> GeneratePost()
         {
 			Random random = new Random();
@@ -82,14 +117,14 @@ namespace MyBlog.Controllers
 
 			for (int i = 0; i < 100; i++)
 			{
-				int likes = random.Next(1, 100); // Memberikan nilai like secara acak antara 1-100
+				int likes = random.Next(1, 100); 
 				posts.Add(new Post
 				{
 					Id = id,
 					Title = "Judul " + id,
 					Content = "Ini isi artikel",
 					CreatedDate = DateTime.Now,
-					Likes = likes // Mengatur jumlah like untuk posting
+					Likes = likes 
 				});
 				id++;
 			}

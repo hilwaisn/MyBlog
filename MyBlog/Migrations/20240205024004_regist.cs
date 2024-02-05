@@ -5,7 +5,7 @@
 namespace MyBlog.Migrations
 {
     /// <inheritdoc />
-    public partial class buattabel : Migration
+    public partial class regist : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

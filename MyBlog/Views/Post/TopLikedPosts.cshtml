@@ -1,5 +1,7 @@
 ﻿@model List<Post>
-
+@{
+    ViewData["Title"] = "Top Liked Posts";
+}
 <h1>Top 5 Liked Posts</h1>
 
 @foreach (var post in Model)

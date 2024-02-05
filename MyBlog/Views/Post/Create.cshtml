@@ -1,4 +1,8 @@
-﻿<div class=" card">
+﻿@{
+	ViewData["Title"] = "Create";
+}
+
+<div class=" card">
 	<div class="card-header">
 		<h3>Tambah Post</h3>
 	</div>
@@ -8,7 +12,9 @@
 			<input type="text" name="Title" class="form-control" />
 			<label>Konten</label>
 			<textarea name="Content" class="form-control"></textarea>
-			<button type="submit" class="btn btn-primary">Simpan</button>
+			<label>Jumlah Like</label>
+			<input type="number" name="Likes" class="form-control" />
+			<button type="submit" class="btn ">Simpan</button>
 		</form>
 	</div>
 </div>

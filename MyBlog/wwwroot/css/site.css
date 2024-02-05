@@ -1,23 +1,258 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+        position: relative;
+        min-height: 100%;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem #fff, 0 0 0 0.25rem #258cfb;
 }
 
 body {
-  margin-bottom: 60px;
-  background-color: white;
+    margin-bottom: 60px;
+    background-color: #eee;
+    color: #333;
+}
+
+.navbar.bg-gradient {
+    background-color: #444;
+}
+
+    .navbar.bg-gradient .navbar-brand {
+        font-size: 1.4rem;
+        font-weight: bold;
+        font-family: 'Comic Sans MS';
+        color: #fff;
+    }
+
+    .navbar.bg-gradient .navbar-nav .nav-link {
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: bold;
+        font-family: 'Comic Sans MS';
+    }
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="datetime-local"] {
+    background-color: #ddd;
+    color: #333;
+    border: 1px solid #555;
+    font-family: 'Comic SS MS', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    padding: 0.75rem;
+}
+
+.text-danger {
+    color: #b32017;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #444;
+    font-family: 'Comic Sans MS', sans-serif;
+}
+
+h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #444;
+    font-family: 'Comic Sans MS', sans-serif;
+    text-align:center;
+}
+
+p {
+    font-size: 1.1rem;
+}
+
+    p:nth-child(2) {
+        font-weight: bold;
+    }
+
+.privacy-policy {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.highlight {
+    color: black;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 5px solid #ddd;
+    border-radius: 15px;
+    background-color: #fafafa;
+    color: black;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 15px;
+}
+
+form {
+    margin-top: 1rem;
+}
+
+.form-container {
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 600px;
+    border: 5px solid #ddd;
+    border-radius: 10px;
+    background-color: #fafafa;
+    color: black;
+}
+
+.form-floating {
+    position: relative;
+    margin-bottom: 1rem;
+    padding:15px;
+}
+
+    .form-floating label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0.5rem 0.75rem;
+        font-family: 'Comic Sans MS', sans-serif;
+        font-size: 1rem;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 0.25rem;
+        transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+        pointer-events: none;
+    }
+
+    .form-floating input:focus + label,
+    .form-floating input:valid + label {
+        transform: translateY(-1.5rem) scale(0.8);
+        opacity: 0.7;
+    }
+
+    .form-floating input{
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    width: 100%;
+    }
+
+.form-floating input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+.card {
+    border: 5px;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-bottom: 2rem;
+}
+
+.card-header {
+    padding: 1.5rem;
+    border: none;
+    border-bottom: none;
+    background-color: #f8f9fa;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    margin-bottom:0;
+}
+
+.card-body {
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 15px;
+    border: 5px solid #ccc;
+    border-radius:15px;
+}
+
+    .card-body .btn {
+        font-size:18px;
+    }
+
+    .form-control {
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da; 
+    padding: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #fff;
+    box-shadow: none;
+    margin-top:0;
+    margin-bottom:1rem;
+}
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+    }
+
+.btn {
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: none;
+    color: #fff;
+    background-color: #6c757d; 
+    transition: background-color 0.2s ease-in-out;
+    margin:1rem;
+    font-weight:bold;
+}
+
+    .btn:hover {
+        background-color: #0069d9;
+    }
+
+    .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+        box-shadow: 0 0 0 0.1rem #fff, 0 0 0 0.25rem #007bff;
+    }
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    background-color: #e2e6ea;
+    border: 1px solid #d6d8da; 
+    color: #5a5c69;
+}
+
+.alert-danger {
+    background-color: #e2e6ea;
+    border-color: #d6d8da;
+    color: #5a5c69;
 }

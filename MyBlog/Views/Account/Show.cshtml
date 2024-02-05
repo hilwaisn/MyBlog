@@ -1,0 +1,13 @@
+﻿@model List<User>
+@foreach (var user in @Model)
+{
+	<div class="card-body">
+		<div class="card-header">
+			<h2>@user.Name</h2>
+		</div>
+		<div class="card-body">
+			<p>@user.Username</p>
+		</div>
+		<a href="/account/detail/@user.Id" class="btn">Detail</a>
+	</div>
+}

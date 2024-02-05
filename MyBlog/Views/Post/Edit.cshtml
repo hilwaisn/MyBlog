@@ -1,0 +1,38 @@
+﻿@model Post;
+@{
+	ViewData["Title"] = "Edit";
+}
+<div class="card">
+	<div class="card-header">
+		<h2>Edit Post</h2>
+	</div>
+	<div class="card-body">
+		<form method="post" action="Edit">
+			<label>Title</label>
+			<input 
+				type="text"
+				name="Title"
+				value="@Model.Title"
+				class="form-control"
+				/>
+			<label>Content</label>
+			<input
+				type="text"
+				name="Content"
+				value="@Model.Content"
+				class="form-control"
+				/>
+			<label>Jumlah Like</label>
+			<input type="number"
+				   name="Likes"
+				   value="@Model.Likes"
+				   class="form-control" />
+
+				<input type="hidden" name="Id" value="@Model.Id"/>
+
+				<button type="submit" class="btn btn-success">
+					Save
+				</button>
+		</form>
+	</div>
+</div>
