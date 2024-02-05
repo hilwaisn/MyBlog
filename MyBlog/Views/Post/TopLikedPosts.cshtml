@@ -2,9 +2,10 @@
 @{
     ViewData["Title"] = "Top Liked Posts";
 }
+
 <h1>Top 5 Liked Posts</h1>
 
-@foreach (var post in Model)
+@foreach (var post in ViewBag.Posts)
 {
     <div class="card mb-5">
         <div class="card-header">

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MyBlog.Migrations;
 using MyBlog.Models;
 
 namespace MyBlog.Controllers
@@ -14,52 +15,23 @@ namespace MyBlog.Controllers
 			_context=c;
 		}
 
-		/*private readonly List<Post> _listPosts;
-
-		public PostController() 
-        {
-            _listPosts = GeneratePost();
-        }*/
-		/*public IActionResult Index()
-        {
-            Post post = new Post
-            {
-                Id = 1,
-                Title = "Judulnya",
-                Content = "Ini isi artikel",
-                CreatedDate = DateTime.Now,
-            };
-
-            return View(post);
-        }*/
-
 		public IActionResult Index(int page = 1)
         {
-			ViewBag.PrevPage = (page > 1) ? page - 1 : 1; // Mengatur halaman sebelumnya, jika halaman saat ini bukan halaman pertama
+			ViewBag.PrevPage = (page > 1) ? page - 1 : 1; 
 			ViewBag.NextPage = page + 1;
             int dataPerpage = 10;
             int skip = dataPerpage * page - dataPerpage;
-            //List<Post> data = GeneratePost();
 			List<Post> data = _context.Posts.ToList();
             List<Post> filtreddata = data
-                //.Where(post =>post.Id<=10)
                 .Skip(skip)
                 .Take(dataPerpage)
-                .OrderBy(post =>post.Id)//urutan dari yang terkecil
-                //.OrderByDescending(post => post.Id)//urutan dari yang terbesar
+                .OrderBy(post =>post.Id)
                 .ToList();
             return View(filtreddata);
         }
 
-
-		/*public IActionResult Detail(string title)
-        {
-            ViewBag.Title = title;
-            return View();
-        }*/
 		public IActionResult Detail(int id)
 		{
-			//Post data = _listPosts.Where(post => post.Id == id).FirstOrDefault();
 			Post data = _context.Posts.Where(Post=>Post.Id == id).FirstOrDefault();
 			return View(data);
 		}
@@ -109,33 +81,13 @@ namespace MyBlog.Controllers
 			}
 			return RedirectToAction("Index");
 		}
-        private List<Post> GeneratePost()
+
+        public IActionResult TopLikedPosts()
         {
-			Random random = new Random();
-			List<Post> posts = new List<Post>();
-			int id = 1;
+            List<Post> topLikedPosts = _context.Posts.OrderByDescending(post => post.Likes).Take(5).ToList();
+            ViewBag.Posts = topLikedPosts; 
+            return View();
+        }
 
-			for (int i = 0; i < 100; i++)
-			{
-				int likes = random.Next(1, 100); 
-				posts.Add(new Post
-				{
-					Id = id,
-					Title = "Judul " + id,
-					Content = "Ini isi artikel",
-					CreatedDate = DateTime.Now,
-					Likes = likes 
-				});
-				id++;
-			}
-			return posts;
-		}
-
-		public IActionResult TopLikedPosts()
-		{
-			List<Post> data = GeneratePost();
-			List<Post> topLikedPosts = data.OrderByDescending(post => post.Likes).Take(5).ToList();
-			return View(topLikedPosts);
-		}
-	}
+    }
 }
